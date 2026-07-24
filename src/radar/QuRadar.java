@@ -10,25 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * QuRadar - core radar violation-detection engine.
- *
- * Receives Observation data forwarded from the physical radar hardware
- * (plate number, date, car type, speed, seatbelt status) and evaluates
- * each observation against a pluggable set of Rule implementations
- * (Strategy Pattern - see the radar.rules package).
- *
- * For every rule that is violated, a Violation is generated and grouped
- * into a single Fine for that observation. Totals per plate number and
- * per-rule violation counts are tracked internally.
- *
- * The system is extensible by design: new rules (e.g. a BusSpeedRule)
- * can be added at runtime via addRule() without any modification to
- * this class, satisfying the Open/Closed Principle.
- *
- * AI model used: none. This is a deterministic, rule-based system —
- * no machine learning or AI model is involved in violation detection.
- */
 public class QuRadar {
     private List<Rule> rules;
     private Map<String, Integer> finesLedger;
